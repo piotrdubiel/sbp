@@ -1,2 +1,7 @@
 build/
+dist/
+*.pyc
 *.autosave
+*.egg-info
+MANIFEST
+venv/
