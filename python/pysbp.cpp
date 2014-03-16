@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <Python/Python.h>
+#include "Python.h"
 #include <iostream>
 #include "SBPNetwork.h"
 #include "utils.h"

@@ -1,7 +1,7 @@
 #ifndef SBP_UTILS_H
 #define SBP_UTILS_H
 
-#include <Python/Python.h>
+#include "Python.h"
 #include <vector>
 
 PyObject* buildListFromFloatVector(std::vector<float> v);
