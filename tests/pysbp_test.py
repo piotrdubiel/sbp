@@ -3,6 +3,7 @@ import pysbp
 
 EPS = 0.7e-2
 
+
 def load_xor_network_and_classify_test():
     # given
     pysbp.init()
@@ -17,7 +18,7 @@ def load_xor_network_and_classify_test():
     # when
     def check_examples(input, output):
         answer = pysbp.classify(input)
-        assert abs(answer[0] - output[0]) < EPS ,\
+        assert abs(answer[0] - output[0]) < EPS, \
             "Network answer for {} should be {}, not {}".format(
                 input, output, answer)
 
@@ -51,7 +52,6 @@ def classify_accepts_only_list_test():
         yield check_argument_type, TypeError, arg
 
 
-
 def train_to_solve_xor_test():
     # given
     examples = [[[0.0, 0.0], [0.0]],
@@ -69,5 +69,11 @@ def train_to_solve_xor_test():
             pysbp.train(input, output)
 
     # then
-    print pysbp.classify([0.0, 0.0])
-    print pysbp.classify([1.0, 0.0])
+    def check_examples(input, output):
+        answer = pysbp.classify(input)
+        assert abs(answer[0] - output[0]) < EPS, \
+            "Network answer for {} should be {}, not {}".format(
+                input, output, answer)
+
+    for input, output in examples:
+        yield check_examples, input, output

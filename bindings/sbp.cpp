@@ -94,7 +94,7 @@ static PyMethodDef sbp_functions[] = {
     {NULL, NULL, 0, NULL}
 };
 
-PyMODINIT_FUNC initpysbp(void)
+PyMODINIT_FUNC initsbp(void)
 {
-    Py_InitModule3("pysbp", sbp_functions, "Extension module example!");
+    Py_InitModule3("sbp", sbp_functions, "Extension module example!");
 }
