@@ -79,7 +79,13 @@ def classify_accepts_only_list_test():
 #        yield check_examples, input, output
 #
 
-def load_octave_test():
+def decoder_test():
+    d = pysbp.Decoder.from_yaml('net/nets-v1/pl_small_net.yml')
+    assert d.map(0) == 'a'
+    assert d.remap('a') == 0
+
+
+def classifier_test():
     # given
     # letter w
     example = [1.5182029, 4.2104764, -0.9496237, 0.615157, 1.8448412, -0.3655337, 1.593656,
@@ -109,7 +115,8 @@ def load_octave_test():
                0.32664162, -0.07831076, -0.11389559, -0.2222453, -0.5383057]
 
     # when
-    pysbp.load_from_octave('net/nets-v1/pl_small_net.txt')
-    answer = pysbp.classify(example)
+    classifier = pysbp.Classifier('net/nets-v1/pl_small_net.txt',
+                                  'net/nets-v1/pl_small_net.yml')
+
     # then
-    assert answer.index(max(answer)) == 29 # code for w
+    assert classifier.classify(example) == 'w'
