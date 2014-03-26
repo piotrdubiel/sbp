@@ -6,6 +6,7 @@ import sbp
 class Classifier:
     def __init__(self, network_filename, mapping_filename):
         self.decoder = Decoder.from_yaml(mapping_filename)
+        sbp.init()
         net = load_from_octave(network_filename)
         for layer in net:
             sbp.add_layer(*layer)
