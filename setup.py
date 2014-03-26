@@ -7,6 +7,9 @@ extension_mod = Extension("sbp",
                            "src/SBPNetwork.cpp",
                            "src/SBPLayer.cpp",
                            "src/SBPNeuron.cpp"],
-                          include_dirs=["include"])
+                          include_dirs=["include"],
+                          install_requires=[
+                            "PyYAML >= 3.10"
+                          ])
 
-setup(name="pysbp", version='0.0.1', ext_modules=[extension_mod], packages=['pysbp'])
+setup(name="pysbp", version='0.0.2', ext_modules=[extension_mod], packages=['pysbp'])
